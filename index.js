@@ -81,7 +81,8 @@ function Play(){
                     console.log(content);
                 }
                 else{
-                    this.disabled = true
+                    el.style.background = 'red'
+                    el.disabled = true
                     console.log('yes');
                     
                 }
