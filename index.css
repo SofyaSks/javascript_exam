@@ -7,3 +7,12 @@ button{
     color: darkgray;
     
 }
+
+.chosen{
+    color: black;
+
+}
+
+.destroy{
+    visibility: collapse;
+}

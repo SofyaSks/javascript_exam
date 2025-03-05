@@ -37,11 +37,6 @@ function Main(){
    giveButtonValue()
 
    Play()
-
-   
-
-
-
    
 }
 
@@ -52,58 +47,53 @@ function giveButtonValue(){
             buttons[i].textContent = numbers[i]
             
         }
+
+        console.log(buttons);
+        
      
     };
 
 
 function randomNum() {
-    let rand = 0 + Math.random() * 15;
+    let rand = 1 + Math.random() * 8;
     return Math.floor(rand)
 }
 
 function Play(){
-    arr = []
-    content = 0
+
+    count = 1
     buttons = document.querySelectorAll('button')
 
     buttons.forEach(el => {
         el.addEventListener(
             'click',
             ()=>{
-                          
-                          
-                el.style.color = 'black'
-                console.log(el);
 
-                if(el.textContent != content)  {
-                    console.log('no');
-                    content = el.textContent
-                    console.log(content);
-                }
-                else{
-                    el.style.background = 'red'
-                    el.disabled = true
+                el.setAttribute('class', 'chosen')
+
+            setTimeout(()=>{
+                if(count == 2){
+                   chosen_els =  document.querySelectorAll('.chosen')
+                   console.log(chosen_els);
+
+                   if(chosen_els[0].textContent ==chosen_els[1].textContent){
                     console.log('yes');
-                    
+                    chosen_els[0].setAttribute('class', 'destroy')
+                    chosen_els[1].setAttribute('class', 'destroy')
+                    count = 0
+                   }
+                   else{
+                    count = 0
+                    chosen_els[0].removeAttribute("class")
+                    console.log(chosen_els[0]);
+                    chosen_els[1].removeAttribute("class")
+                    chosen_els = []
+                   }
                 }
-
-                // arr.push(el.textContent)
-                // if (arr.length == 2){
-                //     console.log('sdsdsd');
-                //     if (arr[0] != arr[1]){
-                //         arr.length = 0
-                //         console.log(arr);
-                        
-                //     }
-                //     else{
-                //         console.log('same');
-                        
-                //         // el.style.visibility = 'collapsed'
-
-                //         this.remove()
-
-                //     }
-                // }
+                count++
+                }, 700
+            )
+                
 
             }
         )        
